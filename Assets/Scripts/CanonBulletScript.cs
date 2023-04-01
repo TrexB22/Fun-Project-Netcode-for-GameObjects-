@@ -24,7 +24,7 @@ public class CanonBulletScript : MonoBehaviour
         {
             Destroy(gameObject);
         } else if (collision.CompareTag("Player")) {
-            collision.transform.GetChild(1).GetComponent<HealthManager>().TakeDamage(bulletDamageAmountToPlayer);
+            collision.transform.GetChild(1).GetComponent<PlayerHealthManager>().TakeDamage(bulletDamageAmountToPlayer);
             SelfDestruct();
         }
     }
