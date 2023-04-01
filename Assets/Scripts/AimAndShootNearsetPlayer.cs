@@ -12,7 +12,6 @@ public class AimAndShootNearsetPlayer : MonoBehaviour
     public GameObject bulletPrefab;
     [SerializeField] private Transform bulletTransform;
     public float shootingInterval = 2f;
-    //public float bulletSpeed = 10f;
     private float nextShootTime = 0f;
 
     public void AimAtNearestPlayer(Transform nearestPlayerTransform, Transform gunTransform) {
@@ -32,8 +31,6 @@ public class AimAndShootNearsetPlayer : MonoBehaviour
     private void ShootAtNearestPlayer(Vector3 direction, Quaternion targetRotation) {
         GameObject bullet = Instantiate(bulletPrefab, bulletTransform.position, targetRotation);
         bullet.GetComponent<CanonBulletScript>().ApplyForceOnBullet(direction);
-        //Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        //rb.velocity = direction.normalized * bulletSpeed;
     } // ShootAtNearestPlayer
 
 } // Class

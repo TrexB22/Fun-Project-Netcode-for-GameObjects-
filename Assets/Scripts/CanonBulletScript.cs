@@ -7,6 +7,7 @@ public class CanonBulletScript : MonoBehaviour
 
     private Rigidbody2D rigidBody;
     public float bulletSpeed = 10f;
+    public float bulletDamageAmountToPlayer = 5f;
 
     public void ApplyForceOnBullet(Vector3 direction) {
 
@@ -22,6 +23,9 @@ public class CanonBulletScript : MonoBehaviour
         if (collision.gameObject.layer == 6) // When bullet hits ground i.e "Wall" then destroy itself.
         {
             Destroy(gameObject);
+        } else if (collision.CompareTag("Player")) {
+            collision.transform.GetChild(1).GetComponent<HealthManager>().TakeDamage(bulletDamageAmountToPlayer);
+            SelfDestruct();
         }
     }
 
