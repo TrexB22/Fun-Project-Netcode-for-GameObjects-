@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 156554831}
   - component: {fileID: 156554830}
   m_Layer: 5
-  m_Name: Dash Indicator
+  m_Name: Player Dash Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1851,6 +1851,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunRotationSpeed: 10
+  bulletPrefab: {fileID: 8332629133274405623, guid: 88adca7dfac1eaa478a5a7c4e92d91e5, type: 3}
+  bulletTransform: {fileID: 1620794841}
+  shootingInterval: 2
+  bulletSpeed: 10
 --- !u!1 &1560366778
 GameObject:
   m_ObjectHideFlags: 3
@@ -2375,7 +2379,7 @@ GameObject:
   - component: {fileID: 2140368821}
   - component: {fileID: 2140368820}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas (Player)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
