@@ -8,6 +8,9 @@ public class NearestPlayerFinder : MonoBehaviour {
 
     private Transform nearestPlayer; // reference to the nearest player
 
+    [SerializeField]
+    private AimAndShootNearsetPlayer aimAndShootScript;
+
     private void Update() {
         FindNearestPlayer();
     } // Update
@@ -39,7 +42,9 @@ public class NearestPlayerFinder : MonoBehaviour {
         // do something with the nearest player
         if (nearestPlayer != null) {
             Debug.Log("Nearest player: " + nearestPlayer.name);
-            // do something with the nearest player here
+            if (aimAndShootScript != null) { 
+            aimAndShootScript.AimAtNearestPlayer(nearestPlayer, transform);
+            }
         }
 
     } // FindNearestPlayer

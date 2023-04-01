@@ -1097,7 +1097,6 @@ GameObject:
   - component: {fileID: 1110044510}
   - component: {fileID: 1110044509}
   - component: {fileID: 1110044511}
-  - component: {fileID: 1110044512}
   m_Layer: 0
   m_Name: Canon AI Enemy
   m_TagString: Untagged
@@ -1199,19 +1198,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1110044512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110044508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcebc931c344ef9478583bdc47a1a5fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  searchRadius: 5
 --- !u!1 &1319406984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,6 +1799,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1448930049}
+  - component: {fileID: 1448930050}
+  - component: {fileID: 1448930051}
   m_Layer: 0
   m_Name: RotatePoint
   m_TagString: Untagged
@@ -1836,6 +1824,33 @@ Transform:
   m_Father: {fileID: 1110044510}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1448930050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448930048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcebc931c344ef9478583bdc47a1a5fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchRadius: 5
+  aimAndShootScript: {fileID: 1448930051}
+--- !u!114 &1448930051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448930048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d86ecf15b385747a7acc9824170eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunRotationSpeed: 10
 --- !u!1 &1560366778
 GameObject:
   m_ObjectHideFlags: 3
