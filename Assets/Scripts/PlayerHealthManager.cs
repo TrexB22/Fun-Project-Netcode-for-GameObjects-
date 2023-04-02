@@ -22,6 +22,7 @@ public class PlayerHealthManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) {
             Heal(5f);
         }
+
     } // Update
 
     public void TakeDamage(float damage) { 
