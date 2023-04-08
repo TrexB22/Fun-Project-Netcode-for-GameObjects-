@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class BulletScript : MonoBehaviour
+public class BulletScript : NetworkBehaviour
 {
     // Here everything will go in start function as we want everything to run in start and not run again
 
@@ -19,6 +20,9 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        if (!IsOwner) return;
+
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rigidBody = GetComponent<Rigidbody2D>();
         currentMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
@@ -38,7 +42,23 @@ public class BulletScript : MonoBehaviour
 
         // If bullet deosn't hit any wall or ground then self destruct after 2 seconds
         Invoke("SelfDestruct", 2);
+
+        //if (OwnerClientId == 0) {
+        //    // If bullet deosn't hit any wall or ground then self destruct after 2 seconds
+        //    //Invoke("SelfDestruct", 2);
+        //    //print(OwnerClientId);
+        //    //print("From Owner");
+        //} else {
+        //    //print("From Client");
+        //    //deSpawnBulletsForClientsServerRpc();
+        //}
+        
     }
+
+    //[ServerRpc]
+    //private void deSpawnBulletsForClientsServerRpc() {
+    //    print("From Client despawnbullets");
+    //}
 
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.layer == 6) // When bullet hits ground i.e "Wall" then destroy itself.
@@ -58,7 +78,8 @@ public class BulletScript : MonoBehaviour
     }
 
     void SelfDestruct() {
-        Destroy(gameObject);
+        print("From SelfDestruct : " + OwnerClientId);
+        gameObject.GetComponent<NetworkObject>().Despawn(true);
     }
 
 } // Class

@@ -73,9 +73,23 @@ public class Shooting : NetworkBehaviour
         // To make sure that player can't shoot frequently
         if (Input.GetMouseButton(0) && canFire) {
             canFire = false;
-            Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+            if (OwnerClientId == 0) {
+                GameObject spawnBullet = Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+                spawnBullet.GetComponent<NetworkObject>().Spawn(true);
+                PlayerPrefs.SetString("isThisHost", "Yes");
+            } else {
+                spawnBulletsForClientsServerRpc();
+                PlayerPrefs.SetString("isThisHost", "No");
+            }
         }
         // ******************** BULLET FIRING ENDS ********************
     } // Update
+
+    // Because client can't directly spawn objects and there no way around too
+    [ServerRpc]
+    private void spawnBulletsForClientsServerRpc() {
+        GameObject spawnBullet = Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+        spawnBullet.GetComponent<NetworkObject>().Spawn(true);
+    }
 
 } // Class

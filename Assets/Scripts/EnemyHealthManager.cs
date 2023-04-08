@@ -9,8 +9,6 @@ public class EnemyHealthManager : MonoBehaviour
     public Image healthBar;
     public float healthAmount = 100f;
 
-    public GameObject healthCanvas;
-
     void Update()
     {
         if (healthAmount <= 0) {
@@ -31,7 +29,6 @@ public class EnemyHealthManager : MonoBehaviour
             // Parent GameObject does not exist
             Destroy(gameObject);
         }
-        Destroy(healthCanvas);
     } // SelfDestruct
 
 } // Class
